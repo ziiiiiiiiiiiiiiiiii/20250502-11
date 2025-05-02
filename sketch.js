@@ -35,9 +35,15 @@ function draw() {
     for (let j = 0; j < capture.height; j += 20) {
       // 從攝影機影像中取顏色
       let col = capture.get(i, j);
+
+      // 繪製方框
       graphics.fill(col);
       graphics.noStroke();
-      graphics.ellipse(i + 10, j + 10, 15, 15); // 繪製圓形
+      graphics.rect(i, j, 18, 18); // 繪製寬為 18 的方框
+
+      // 在方框中間繪製黑色圓形
+      graphics.fill(0); // 設定圓形顏色為黑色
+      graphics.ellipse(i + 9, j + 9, 5, 5); // 繪製直徑為 5 的圓形
     }
   }
 
@@ -58,5 +64,6 @@ function windowResized() {
   // 當視窗大小改變時，調整畫布大小
   resizeCanvas(windowWidth, windowHeight);
 }
+
 
 
