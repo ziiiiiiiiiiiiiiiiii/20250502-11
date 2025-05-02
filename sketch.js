@@ -25,6 +25,12 @@ function draw() {
 
   // 更新 graphics 的內容
   graphics.background(0); // 設定背景為黑色
+
+  // 翻轉 graphics 的內容
+  graphics.push();
+  graphics.translate(graphics.width, 0); // 將原點移到右上角
+  graphics.scale(-1, 1); // 水平翻轉 graphics 畫布
+
   for (let i = 0; i < capture.width; i += 20) {
     for (let j = 0; j < capture.height; j += 20) {
       // 從攝影機影像中取顏色
@@ -34,6 +40,8 @@ function draw() {
       graphics.ellipse(i + 10, j + 10, 15, 15); // 繪製圓形
     }
   }
+
+  graphics.pop(); // 恢復 graphics 的狀態
 
   // 翻轉畫布以水平翻轉影像
   push();
@@ -50,4 +58,5 @@ function windowResized() {
   // 當視窗大小改變時，調整畫布大小
   resizeCanvas(windowWidth, windowHeight);
 }
+
 
